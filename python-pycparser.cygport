@@ -1,7 +1,7 @@
 inherit python-distutils
 
 NAME="python-pycparser"
-VERSION=2.12
+VERSION=2.14
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python 2 C language parser"
