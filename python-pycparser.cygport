@@ -1,12 +1,24 @@
-inherit python-distutils
+inherit python-wheel
 
 NAME="python-pycparser"
-VERSION=2.14
+VERSION=2.17
 RELEASE=1
 CATEGORY="Python"
-SUMMARY="Python 2 C language parser"
+SUMMARY="Python C language parser"
 DESCRIPTION="pycparser is a complete parser of the C language, written in
 pure Python using the PLY parsing library. It parses C code into an AST and
 can serve as a front-end for C compilers or analysis tools."
 
+# Do NOT upgrade past ply-3.9 yet:
+# https://github.com/eliben/pycparser/issues/147
+PATCH_URI="http://pkgs.fedoraproject.org/cgit/rpms/python-pycparser.git/plain/pycparser-2.10-ply.patch"
+
 ARCH=noarch
+
+CYGPORT_USE_UNSTABLE_API=1
+src_patch_hook() {
+	pushd pycparser
+	find ply/ -delete
+	# this need be done only once, results are the same with 2 and 3
+	${PYTHON3} _build_tables.py
+}
