@@ -1,7 +1,7 @@
 inherit python-wheel
 
 NAME="python-pycparser"
-VERSION=2.19
+VERSION=2.20
 RELEASE=1
 CATEGORY="Python"
 SUMMARY="Python C language parser"
@@ -23,6 +23,4 @@ src_patch_hook() {
 }
 
 # pycparser calls cpp
-python27_pycparser_REQUIRES="gcc-core"
-python36_pycparser_REQUIRES="gcc-core"
-python37_pycparser_REQUIRES="gcc-core"
+python39_pycparser_REQUIRES="gcc-core"
